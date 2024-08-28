@@ -5,13 +5,13 @@ homepage: https://github.com/TheFe91/cached_firestorage.git
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   adaptive_spinner: ^3.0.0
   cached_network_image: ^3.3.1
   enhanced_avatar_view: ^1.0.1
-  firebase_storage: ^12.1.1
+  firebase_storage: ^12.2.0
   flutter:
     sdk: flutter
   get_storage:
