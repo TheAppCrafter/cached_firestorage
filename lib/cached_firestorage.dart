@@ -101,4 +101,18 @@ class CachedFirestorage {
           .write(_storageKeys[storageKey ?? 'default']!, mapDownloadURLs);
     }
   }
+
+  void clearExpiredCache({String? storageKey}) {
+    final String key = _storageKeys[storageKey ?? 'default']!;
+    final Map<String, dynamic> mapDownloadURLs = GetStorage().read(key) ?? {};
+    final DateTime now = DateTime.now();
+
+    mapDownloadURLs.removeWhere((mapKey, value) {
+      final DateTime lastWrite = DateTime.parse(value['lastWrite']);
+      final int difference = now.difference(lastWrite).inMinutes;
+      return difference >= cacheTimeout;
+    });
+
+    GetStorage().write(key, mapDownloadURLs);
+  }
 }
